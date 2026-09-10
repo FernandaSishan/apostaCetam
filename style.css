@@ -1,0 +1,902 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #090611;
+    color: white;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+header {
+    height: 70px;
+
+    background: #120d1d;
+
+    border-bottom: 1px solid #30253e;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 25px;
+}
+
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #5f4775;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+}
+
+
+.saldo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: #21182b;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    color: #f4c542;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout {
+    display: grid;
+
+    grid-template-columns: 1fr 390px;
+
+    min-height: calc(100vh - 70px);
+}
+
+
+/* =========================================================
+   PRINCIPAL
+========================================================= */
+
+.principal {
+    padding: 25px;
+}
+
+
+.titulo {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.titulo h1 {
+    font-size: 27px;
+}
+
+
+.status {
+    background: #30223c;
+
+    color: #bcaecc;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ÁREA DO JOGO
+========================================================= */
+
+.jogo {
+    height: 440px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #40325c 0%,
+            #211b42 35%,
+            #100d24 80%
+        );
+
+    border: 1px solid #3d3152;
+
+    border-radius: 12px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.estrelas {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            #aaa 1px,
+            transparent 1px
+        );
+
+    background-size:
+        90px 90px,
+        140px 140px;
+
+    opacity: 0.25;
+}
+
+
+.aviao {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 110px;
+
+    transform: rotate(-8deg);
+
+    filter:
+        drop-shadow(
+            0 10px 15px rgba(0,0,0,.5)
+        );
+
+    animation:
+        voar 3s infinite alternate ease-in-out;
+}
+
+
+@keyframes voar {
+
+    from {
+        transform:
+            translateY(10px)
+            rotate(-8deg);
+    }
+
+    to {
+        transform:
+            translateY(-15px)
+            rotate(-8deg);
+    }
+
+}
+
+
+.multiplicador {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 15px;
+
+    font-size: 70px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.5);
+}
+
+
+.subtitulo {
+    position: relative;
+
+    z-index: 2;
+
+    color: #bdb4ca;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   HISTÓRICO
+========================================================= */
+
+.historico {
+    display: flex;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    padding: 15px 0;
+}
+
+
+.historico span {
+    min-width: 70px;
+
+    text-align: center;
+
+    padding: 9px 10px;
+
+    background: #21182d;
+
+    border: 1px solid #342742;
+
+    border-radius: 7px;
+
+    color: #ddd;
+
+    font-weight: bold;
+}
+
+
+.historico .alto {
+    color: #a8e063;
+}
+
+
+.historico .baixo {
+    color: #d78cff;
+}
+
+
+/* =========================================================
+   ÁREA DE PALPITE
+========================================================= */
+
+.aposta {
+    background: #21182d;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    border: 1px solid #382b46;
+}
+
+
+.aposta-topo {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.aposta-topo h2 {
+    font-size: 19px;
+}
+
+
+.contador {
+    color: #a9a0b3;
+
+    font-size: 13px;
+}
+
+
+.campo {
+    background: #100b18;
+
+    border: 1px solid #40334c;
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+}
+
+
+.campo label {
+    display: block;
+
+    color: #99909f;
+
+    font-size: 12px;
+
+    margin-bottom: 7px;
+}
+
+
+.campo select,
+.campo input {
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 17px;
+}
+
+
+option {
+    background: #1c1426;
+}
+
+
+/* =========================================================
+   VALORES
+========================================================= */
+
+.valores {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+.valor {
+    background: #554264;
+
+    border: none;
+
+    color: white;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.valor:hover {
+    background: #705584;
+}
+
+
+.valor.selecionado {
+    background: #8b63a5;
+}
+
+
+/* =========================================================
+   BOTÃO
+========================================================= */
+
+.btn-apostar {
+    width: 100%;
+
+    border: none;
+
+    background: #347df4;
+
+    color: white;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.btn-apostar:hover {
+    background: #4c8cff;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    background: #120d1b;
+
+    border-left:
+        1px solid #30253e;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    display: flex;
+
+    gap: 25px;
+
+    border-bottom:
+        1px solid #30253e;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.menu span {
+    color: #918798;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.menu .ativo {
+    color: white;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   RANKING
+========================================================= */
+
+.ranking-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.ranking-header h2 {
+    font-size: 19px;
+}
+
+
+.ranking-header span {
+    color: #8c8294;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BARRA
+========================================================= */
+
+.barra {
+    height: 100px;
+
+    background: #191322;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.linha {
+    position: absolute;
+
+    left: 0;
+
+    bottom: 15px;
+
+    width: 100%;
+
+    height: 55px;
+
+    border-bottom:
+        3px solid #91d52c;
+
+    transform: skewY(-5deg);
+}
+
+
+/* =========================================================
+   PARTICIPANTES
+========================================================= */
+
+.participante {
+    display: grid;
+
+    grid-template-columns:
+        45px 1fr 60px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 5px;
+
+    border-bottom:
+        1px solid #29202f;
+}
+
+
+.avatar {
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 8px;
+
+    background: #4b3659;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 20px;
+}
+
+
+.info strong {
+    display: block;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.info small {
+    color: #807687;
+}
+
+
+.chance {
+    text-align: right;
+
+    color: #a8e063;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   ADICIONAR PARTICIPANTE
+========================================================= */
+
+.adicionar {
+    margin-top: 20px;
+
+    background: #1c1426;
+
+    padding: 15px;
+
+    border-radius: 10px;
+}
+
+
+.adicionar h3 {
+    margin-bottom: 10px;
+
+    font-size: 15px;
+}
+
+
+.adicionar input {
+    width: 100%;
+
+    background: #0e0915;
+
+    border:
+        1px solid #3b2d48;
+
+    padding: 11px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    margin-bottom: 8px;
+
+    outline: none;
+}
+
+
+.btn-add {
+    width: 100%;
+
+    background: #554264;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.btn-add:hover {
+    background: #705584;
+}
+
+
+/* =========================================================
+   MEUS PALPITES
+========================================================= */
+
+.meus-palpites {
+    margin-top: 20px;
+
+    background: #1c1426;
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+
+.meus-palpites h3 {
+    font-size: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.palpite-item {
+    padding: 9px;
+
+    background: #110c18;
+
+    border-radius: 7px;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+}
+
+
+.palpite-item strong {
+    color: #a8e063;
+}
+
+
+.sem-palpite {
+    color: #807687;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.resultado {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.75);
+
+    z-index: 100;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.resultado-card {
+    width: 420px;
+
+    max-width: 90%;
+
+    background: #21182d;
+
+    border:
+        1px solid #5b4570;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.7);
+}
+
+
+.resultado-card .icone {
+    font-size: 60px;
+
+    margin-bottom: 15px;
+}
+
+
+.resultado-card h2 {
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+
+.resultado-card p {
+    color: #aaa1b1;
+
+    line-height: 1.5;
+}
+
+
+.fechar {
+    margin-top: 20px;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #347df4;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.fechar:hover {
+    background: #4c8cff;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-left: none;
+
+        border-top:
+            1px solid #30253e;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 15px;
+    }
+
+    .principal {
+        padding: 15px;
+    }
+
+    .jogo {
+        height: 330px;
+    }
+
+    .multiplicador {
+        font-size: 50px;
+    }
+
+    .aviao {
+        font-size: 80px;
+    }
+
+    .valores {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .titulo {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}

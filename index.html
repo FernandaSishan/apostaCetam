@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bolão do CETAM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ✈️
+            </div>
+
+            <span>
+                BOLÃO DO CETAM
+            </span>
+
+        </div>
+
+        <div class="saldo">
+
+            🪙
+
+            <span id="pontos">
+                100
+            </span>
+
+            pontos
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         LAYOUT
+    ====================================================== -->
+
+    <div class="layout">
+
+
+        <!-- =================================================
+             PARTE PRINCIPAL
+        ================================================== -->
+
+        <main class="principal">
+
+            <div class="titulo">
+
+                <h1>
+                    🚨 Quem vai desistir primeiro?
+                </h1>
+
+                <div class="status">
+                    ● BOLÃO ABERTO
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ÁREA CENTRAL
+            ================================================== -->
+
+            <div class="jogo">
+
+                <div class="estrelas"></div>
+
+                <div class="aviao">
+                    ✈️
+                </div>
+
+                <div
+                    class="multiplicador"
+                    id="multiplicador"
+                >
+                    1.00x
+                </div>
+
+                <div class="subtitulo">
+                    A chance está subindo... 👀
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 HISTÓRICO
+            ================================================== -->
+
+            <div class="historico">
+
+                <span class="baixo">
+                    1.24x
+                </span>
+
+                <span class="alto">
+                    3.80x
+                </span>
+
+                <span class="baixo">
+                    1.12x
+                </span>
+
+                <span class="alto">
+                    5.21x
+                </span>
+
+                <span class="alto">
+                    2.73x
+                </span>
+
+                <span class="baixo">
+                    1.08x
+                </span>
+
+                <span class="alto">
+                    7.45x
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 ÁREA DE PALPITE
+            ================================================== -->
+
+            <div class="aposta">
+
+                <div class="aposta-topo">
+
+                    <h2>
+                        🎯 Fazer palpite
+                    </h2>
+
+                    <div class="contador">
+                        Sem dinheiro real
+                    </div>
+
+                </div>
+
+
+                <!-- QUEM ESTÁ APOSTANDO -->
+
+                <div class="campo">
+
+                    <label>
+                        QUEM ESTÁ FAZENDO O PALPITE?
+                    </label>
+
+                    <select id="apostador">
+
+                        <option value="">
+                            Selecione seu nome
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- QUEM SERÁ ESCOLHIDO -->
+
+                <div class="campo">
+
+                    <label>
+                        QUEM VOCÊ ACHA QUE VAI DESISTIR?
+                    </label>
+
+                    <select id="escolha">
+
+                        <option value="">
+                            Selecione um participante
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- VALOR -->
+
+                <div class="campo">
+
+                    <label>
+                        QUANTIDADE DE PONTOS
+                    </label>
+
+                    <input
+                        type="text"
+                        id="valor"
+                        value="10 pontos"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- BOTÕES DE PONTOS -->
+
+                <div class="valores">
+
+                    <button
+                        class="valor"
+                        onclick="selecionarValor(5, this)"
+                    >
+                        5
+                    </button>
+
+                    <button
+                        class="valor selecionado"
+                        onclick="selecionarValor(10, this)"
+                    >
+                        10
+                    </button>
+
+                    <button
+                        class="valor"
+                        onclick="selecionarValor(25, this)"
+                    >
+                        25
+                    </button>
+
+                    <button
+                        class="valor"
+                        onclick="selecionarValor(50, this)"
+                    >
+                        50
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="btn-apostar"
+                    onclick="registrarPalpite()"
+                >
+                    🎯 REGISTRAR PALPITE
+                </button>
+
+            </div>
+
+        </main>
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- MENU -->
+
+            <div class="menu">
+
+                <span class="ativo">
+                    👥 Participantes
+                </span>
+
+                <span>
+                    🕘 Histórico
+                </span>
+
+            </div>
+
+
+            <!-- RANKING -->
+
+            <div class="ranking-header">
+
+                <h2>
+                    🏆 Ranking
+                </h2>
+
+                <span>
+                    MAIS APOSTADOS
+                </span>
+
+            </div>
+
+
+            <div class="barra">
+
+                <div class="linha"></div>
+
+            </div>
+
+
+            <!-- LISTA DO RANKING -->
+
+            <div id="ranking"></div>
+
+
+            <!-- =================================================
+                 ADICIONAR PARTICIPANTE
+            ================================================== -->
+
+            <div class="adicionar">
+
+                <h3>
+                    ➕ Adicionar participante
+                </h3>
+
+                <input
+                    type="text"
+                    id="novoNome"
+                    placeholder="Nome do colega..."
+                >
+
+                <button
+                    class="btn-add"
+                    onclick="adicionarParticipante()"
+                >
+                    Adicionar
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 ÚLTIMOS PALPITES
+            ================================================== -->
+
+            <div class="meus-palpites">
+
+                <h3>
+                    🎯 Últimos palpites
+                </h3>
+
+                <div id="meusPalpites">
+
+                    <p class="sem-palpite">
+                        Nenhum palpite registrado.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DE RESULTADO
+    ====================================================== -->
+
+    <div
+        class="resultado"
+        id="resultado"
+    >
+
+        <div class="resultado-card">
+
+            <div class="icone">
+                🏆
+            </div>
+
+            <h2>
+                Temos um campeão! 😂
+            </h2>
+
+            <p id="mensagemResultado"></p>
+
+            <button
+                class="fechar"
+                onclick="fecharResultado()"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+<script type="module" src="app.js"></script>
+
+</body>
+
+</html>

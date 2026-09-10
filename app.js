@@ -153,6 +153,11 @@ let participantes = [
     {
         nome: "Fernanda",
         votos: 0
+    },
+
+    {
+        nome: "Rickson",
+        votos: 0
     }
 
 ];
